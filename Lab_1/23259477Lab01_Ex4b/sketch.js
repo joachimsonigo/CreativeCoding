@@ -1,10 +1,17 @@
+let a = 0;
+
 function setup() {
   createCanvas(400, 400);
 }
 
 function draw() {
   background(220);
-  choose(1);
+  choose(a);
+}
+
+function mousePressed() {
+  a = (a + 1) % 3;
+  choose(a);
 }
 
 function choose(a) {
@@ -16,7 +23,7 @@ function choose(a) {
         line(x, 0, x, height);
         line(0, y, width, y);
         fill(random(255), random(255), random(255));
-        triangle(x, y, width / 20, height / 20);
+        rect(x, y, width / 20, height / 20);
       }
     }
   } else if (a == 0) {
