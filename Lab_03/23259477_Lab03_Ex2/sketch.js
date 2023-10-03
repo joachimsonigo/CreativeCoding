@@ -20,7 +20,7 @@ function setup() {
 }
 
 function mousePressed() {
-  createP();
+  para = createP();
 }
 
 function draw() {
