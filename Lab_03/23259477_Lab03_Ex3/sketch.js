@@ -1,7 +1,8 @@
 var colr = random(90,255);
 var colg = random(0,255);
 var colb = random(120,255);
-var sliderR, sliderG, sliderB;
+var speed = 1;
+var sliderR, sliderG, sliderB, sliderV;
 var video;
 var videoHidden = false;
 
@@ -10,22 +11,25 @@ function setup() {
   sliderR = createSlider(0, 255, colr);
   sliderR.position(20, 420);
   sliderR.style('width', '350px');
+  sliderR.style('accent-color', 'red');
   sliderG = createSlider(0, 255, colg);
   sliderG.position(20, 450);
   sliderG.style('width', '350px');
+  sliderG.style('accent-color', 'green');
   sliderB = createSlider(0, 255, colb,255/10);
   sliderB.position(20, 480);
   sliderB.style('width', '350px');
+  sliderB.style('accent-color', 'blue');
+  sliderV = createSlider(1, 10, 1);
 
   video = createVideo('videoplayback.mp4'); // Replace 'video.mp4' with your video file
-  video.position(20, 50);
+  video.position(80, 100);
   video.size(200, 150);
+  video.loop(); // Start the video
 }
 
 function mousePressed() {
-  if (mouseX > 20 && mouseX < 220 && mouseY > 50 && mouseY < 200) {
-    toggleVideo();
-  }
+    // toggleVideo();
 }
 
 function draw() {
@@ -33,6 +37,8 @@ function draw() {
   colg = sliderG.value();
   colb = sliderB.value();
   background(colr, colg, colb);
+  speed = sliderV.value();
+  video.speed(speed); // Set the speed to a value between 0 and 10
 }
 
 function toggleVideo() {
